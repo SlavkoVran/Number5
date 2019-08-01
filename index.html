@@ -15,11 +15,6 @@
 
 <body>
     <div class="wrapper-bg bg-container">
-        <div class="video-bg">
-            <video autoplay loop muted>
-                <source src="./assets/1.mp4" type="video/mp4">
-            </video>
-        </div>
 
         <div class="container container-main">
             <div class="num-header">
@@ -28,20 +23,7 @@
             </div>
 
             <!-- sekcija 3 -->
-            <div id="drawnNumbers" class="section-3">
-                <div id="numberValue0"></div>
-                <div id="numberValue1"></div>
-                <div id="numberValue2"></div>
-                <div id="numberValue3"></div>
-                <div id="numberValue4"></div>
-                <div id="numberValue5"></div>
-                <div id="numberValue6"></div>
-                <div id="numberValue7"></div>
-                <div id="numberValue8"></div>
-                <div id="numberValue9"></div>
-                <div id="numberValue10"></div>
-                <div id="numberValue11"></div>
-            </div>
+            <div id="drawnNumbers" class="section-3"></div>
 
             <!-- section 1 -->
             <div class="wrapper-section">
@@ -72,8 +54,15 @@
                 </button>
 
                 <div class="win">
-                    <h4>Win</h4>
-                    <div id="winMoney"> 0 </div>
+                    <div>
+                            <h4>Win</h4>
+                            <div id="winBet"> 0 </div>
+                    </div>
+                    <div>
+                            <h4>Bet value</h4>
+                            <div id="betValueText"> 0 </div>
+                    </div>
+                    
                 </div>
 
             </div>

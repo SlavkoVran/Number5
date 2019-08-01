@@ -2,7 +2,7 @@
 const numbersForSelections = document.querySelector('#numbersForSelections')
 let pom = 0;
 let counter = 0;
-let drawnNumbers = [];
+let arrayDrawnNumbers = [];
 let arrayWinTickets = [];
 let allTickets = [];
 let arrayTicket = [];
@@ -27,12 +27,14 @@ const UI = {
             numbersForSelections.innerHTML += `<div class='number-background'> ${num.number} </div>`
         })
     },
+   
 }
 UI.createObj();
 UI.createDiv();
 
 $('.number-background').on('click', selectNumber)
 let pom1 = 0;
+
 function selectNumber() {
     $(this).toggleClass('number-background-update');
     if ($(this).is('.number-background-update')) {
@@ -86,21 +88,27 @@ addTicket = () => {
 }
 
 $('#btnAddTicket').on('click', addTicket);
-drawnInterval = () => {
-    while (drawnNumbers.length < 12) {
+
+randomNumber = () => {
+    while (arrayDrawnNumbers.length < 12) {
         let selectedNumbers = Math.ceil(Math.random() * 30);
-        if (drawnNumbers.indexOf(selectedNumbers) == -1) {
-            drawnNumbers.push(selectedNumbers);
+        if (arrayDrawnNumbers.indexOf(selectedNumbers) == -1) {
+            arrayDrawnNumbers.push(selectedNumbers);  
         }
     }
 }
 
-drawnInterval();
 drawnOut = () => {
+    randomNumber();
+    console.log(arrayDrawnNumbers)
+    for(let i=0;i<12;i++){
+        $('#drawnNumbers').append($(`<div id="drawnNumber${i}" > </div>`))
+        } 
     interval = setInterval(function () {
-        $('#numberValue' + pom).html(drawnNumbers[pom]);
-        $('#numberValue' + pom).addClass('drawn-number');
+        $('#drawnNumber' + pom).text(arrayDrawnNumbers[pom]);
+        $('#drawnNumber' + pom).addClass('drawn-number');
         $('#btnAddTicket').addClass('btn-disabled')
+        
         pom++;
         if (pom == 12) {
             stopInterval()
@@ -110,35 +118,48 @@ drawnOut = () => {
 }
 
 stopInterval = () => clearInterval(interval);
-let dobitak = 0;
+let gain = 0;
 let won = 0;
+let betValueText = 0;
 
 winTickets = () => {
     for (let i = 0; i < allTickets.length; i++) {
-        let found = allTickets[i].every(r => drawnNumbers.indexOf(r) >= 0);
+        let found = allTickets[i].every(r => arrayDrawnNumbers.indexOf(r) >= 0);
         arrayWinTickets.push(found);
-
+        betValueText += +bet[i]
+        $("#betValueText").text(betValueText)
+    
         if (found === true) {
             $('#ticketDisplay').find(".wrapper-number").eq(`${i}`).addClass('win-ticket')
+            $('.wrapper-number').find(".numbre-beckground-update").eq(`${i}`).addClass('win-ticket')
             let sum = allTickets[i].length;
             switch (sum) {
-                case 1: dobitak = bet[i] * 1.2;
+                case 1: gain = bet[i] * 2;
                     break;
-                case 2: dobitak = bet[i] * 1.4;
+                case 2: gain = bet[i] * 4;
                     break;
-                case 3: dobitak = bet[i] * 1.6;
+                case 3: gain = bet[i] * 6;
                     break;
-                case 4: dobitak = bet[i] * 1.8;
+                case 4: gain = bet[i] * 8;
                     break;
-                case 5: dobitak = bet[i] * 2;
+                case 5: gain = bet[i] * 10;
                     break;
             }
-            won += dobitak;
-            $('#winMoney').text(won)
+            won += gain;
+            $('#winBet').text(won)
         } else {
             $('#ticketDisplay').find(".wrapper-number").eq(`${i}`).addClass('lose-ticket')
         }
+        $("#betValueText").text(betValueText)
     }
+    $('.number-background').each(function(){
+        if(arrayDrawnNumbers.indexOf(+$(this).text())<0){
+        $(this).css('background','red')
+        } else {
+        $(this).css('background','green')
+        }
+        })
+    
     setTimeout(reset, 5000);
 }
 
@@ -162,7 +183,9 @@ function setBetValue() {
             break;
     }
     $("#betValue").text(betValue)
+    
 }
+
 
 
 reset = () => {
@@ -172,10 +195,11 @@ reset = () => {
     $('.number-background').on('click', selectNumber);
     $('#btnAddTicket').off('click', drawnOut).on('click', addTicket);
     $('#ticketDisplay').empty();
-    $('#winMoney').text('0')
+    $('#winBet').text('0')
     $("#betValue").text('10')
+    $("#betValueText").text('0')
     pom = 0;
-    drawnNumbers = [];
+    arrayDrawnNumbers = [];
     counter = 0;
     allTickets = [];
     arrayWinTickets = [];
