@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="animation.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="media.css">
+    <title>Number5</title>
+</head>
+
+<body>
+    <div class="wrapper-bg bg-container">
+        <div class="video-bg">
+            <video autoplay loop muted>
+                <source src="./assets/1.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="container container-main">
+            <div class="num-header">
+                <h2 class="num5">Number5</h2>
+                <img id="rules" src="./assets/rules.svg" alt="">
+            </div>
+
+            <!-- sekcija 3 -->
+            <div id="drawnNumbers" class="section-3">
+                <div id="numberValue0"></div>
+                <div id="numberValue1"></div>
+                <div id="numberValue2"></div>
+                <div id="numberValue3"></div>
+                <div id="numberValue4"></div>
+                <div id="numberValue5"></div>
+                <div id="numberValue6"></div>
+                <div id="numberValue7"></div>
+                <div id="numberValue8"></div>
+                <div id="numberValue9"></div>
+                <div id="numberValue10"></div>
+                <div id="numberValue11"></div>
+            </div>
+
+            <!-- section 1 -->
+            <div class="wrapper-section">
+                <div class="section-1">
+                    <h4 class="number-text">Chose your numbers</h4>
+                    <div id="numbersForSelections" class="grid-6 "></div>
+                </div>
+                <!-- section 4 odabrani tiketi i proveravanje da li je dobitni ili ne -->
+                <div class="section-4">
+                    <h4 class="number-text">Your tickets</h4>
+                    <div id="ticketDisplay"></div>
+                </div>
+            </div>
+
+            <!-- sekcija2-->
+            <div class="section-2">
+                <div class="bet">
+                    <img id="betMinus" class="money-m set-bet" src="./assets/minus.svg" alt="">
+                    <div class="bet-1">
+                        <h4 class="bet-text">Bet</h4>
+                        <div id="betValue">10</div>
+                    </div>
+                    <img id="betPlus" class="money-p set-bet" src="./assets/add.svg" alt="">
+                </div>
+
+                <button id="btnAddTicket" class="btn-add">
+                    ADD TICKET
+                </button>
+
+                <div class="win">
+                    <h4>Win</h4>
+                    <div id="winMoney"> 0 </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="mainD.js"></script>
+</body>
+
+</html>

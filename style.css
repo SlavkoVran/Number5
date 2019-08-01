@@ -1,0 +1,327 @@
+@import url('https://fonts.googleapis.com/css?family=Poller+One|Raleway&display=swap');
+
+*, *:before, *:after{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Raleway', sans-serif; 
+    background-size: cover;
+    overflow-x: hidden;
+}
+
+.wrapper-bg{
+    height: 100vh;
+    display: flex;
+    align-content: center;
+    color:#fff; 
+}
+
+.bg-container{
+    max-width: 960px;
+    padding-left:1rem;
+    padding-right: 1rem;
+    margin: auto;
+    text-align: center;
+}
+
+.video-bg{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.video-bg video{
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: contain;
+}
+
+.num-header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.num-header img{
+    height: 100%;
+    cursor: pointer;
+}
+.num5{
+    font-family: 'Poller One', cursive;
+    text-align: center;
+    margin: 0;
+    color: #231f20;
+}
+
+.container-main{
+    display: grid;
+    grid-template-rows: 5vh 15vh 10vh 70vh;
+    z-index: 1;
+}
+
+/* Stilizovanje sekcija*/
+.wrapper-section{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.section-1, .section-4{
+    margin: 5px;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    background-color: rgb(255, 255, 255,0.1);
+    box-shadow: 0px 3px 12px -1px rgba(0,0,0,1);
+}
+
+.section-1{
+    justify-content: space-around;
+}
+
+button:focus{
+    outline:none;
+}
+
+.section-4{
+justify-content: space-around;
+}
+
+#numbersForSelections, #ticketDisplay{
+    height: 90%;
+}
+
+#ticketDisplay{
+    display: flex;
+    flex-direction: column;
+}
+
+/* //sekcija dugmici */
+.section-2{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    grid-row: 3;
+}
+
+.bet, .win{
+    height: 80%;
+    display: flex;
+    width: 25%;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255,0.1);
+    box-shadow: 0px 3px 12px -1px rgba(0,0,0,1);
+}
+
+.win{  
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #231f20;
+    /* animation: animate 1.4s linear infinite; */
+   
+}
+.win h4{
+    margin: 5px 0 0 0;
+    font-size: 1rem;
+    font-weight: 900;
+    color: #231f20;
+}
+
+.bet-1{
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+align-items: center;
+height: 100%;
+}
+
+.set-bet{
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    margin: auto;
+}
+
+.bet-text, .win{
+    text-align: center;
+    color: #231f20;
+    font-weight: bold;
+    font-size: 1rem;
+    font-weight: 900;
+    margin: 0;
+}
+
+#betValue{
+    width: 100%;
+    height: 50%;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 900;
+    color: #231f20;
+}
+
+/* // stilizovanje dugmeta */
+.btn-add{
+    position: relative;
+    height: 80%;
+    width: 40%;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,1);
+    border: none;
+    color: #fff;
+    font-family: 'Raleway', sans-serif;
+    overflow: hidden;
+    font-weight: 900;
+    font-size: 1rem;
+    border-radius: 50px;
+    background: #ee2049;
+}
+
+.btn-play{
+    background: #0caa58;
+    font-size: 1.5rem;
+}
+
+.btn-disabled{
+    opacity: 0.2;
+    
+}
+
+.btn-add:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.btn-add:after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgb(255, 255, 255, .4),transparent);
+    transition: 0.5s;
+    transition-delay: 0.2s;
+    overflow: hidden;
+}
+
+.btn-add:hover::after{
+    left: 100%;
+}
+
+body > div > div.section-2{
+    order:2;
+}
+/* izvuceni brojevi */
+.section-3{
+    margin: 5px 0 5px 0;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    justify-items: center;
+    align-items: center;
+    color: white;
+    border-radius: 30px;
+    box-shadow: 0px 3px 12px -1px rgba(0,0,0,1);
+}
+
+.wrapper-number{
+    display: flex;
+    border-radius: 40px;
+    margin: 2.5px;
+}
+
+.grid-6{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    justify-items: center;
+}
+
+.drawn-number{
+    background: radial-gradient(circle at 50% 40%, #117fcd, #117fcd 66%, #fff 100%);
+    width: 5vh;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1px;
+    border-radius: 50%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-family: 'Poller One', cursive;
+}
+
+/* class koje se dodaju u JS */
+.number-background, .number-background-update{
+    position: relative;
+    height: 5vh;
+    width: 5vh;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: 'Poller One', cursive;
+    font-size: 1em;
+    overflow: hidden;
+}
+
+.number-background{
+    color:#231f20; 
+    margin: 0;
+    background: radial-gradient(circle at 50% 40%, #fcfcfc, #efeff1 66%, #9b5050 100%);
+}
+
+.number-background-update{
+    margin-left: 3%;
+    background: #117fcd;
+    background: radial-gradient(circle at 50% 40%, #117fcd, #117fcd 66%, #fff 100%);
+    color:#fff;
+}
+
+.win-ticket{ 
+background:#0caa58;
+}
+
+.number-text{
+    color: #231f20;
+    margin: 0;
+    text-align: center;
+}
+
+.number-background:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+}
+
+.number-background:after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgb(255, 255, 255, .4),transparent);
+    transition: 0.5s;
+    transition-delay: 0.2s;
+}
+    
+.number-background:hover::after{
+        left: 100%;
+}
+
+
