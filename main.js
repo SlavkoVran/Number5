@@ -66,7 +66,7 @@ addTicket = () => {
     if ($('#btnAddTicket').not('btn-play') && arrayTicket.length != 0) {
         let wrapper = $('<div class="wrapper-number"></div>')
         for (let i = 0; i < arrayTicket.length; i++) {
-            let div = $('<div class="number-background "></div>').text(arrayTicket[i])
+            let div = $('<div class="number-background win-lose"></div>').text(arrayTicket[i])
             wrapper.append(div)
             $('#ticketDisplay').append(wrapper);
         }
@@ -152,15 +152,15 @@ winTickets = () => {
         }
         $("#betValueText").text(betValueText)
     }
-    $('.number-background').each(function(){
+    $('.win-lose').each(function(){
         if(arrayDrawnNumbers.indexOf(+$(this).text())<0){
-        $(this).css('background','red')
+        $(this).css('background','#ee2049')
         } else {
-        $(this).css('background','green')
+        $(this).css('background','#0caa58')
         }
         })
     
-    setTimeout(reset, 5000);
+    // setTimeout(reset, 5000);
 }
 
 
