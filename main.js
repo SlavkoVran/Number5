@@ -134,7 +134,7 @@ winTickets = () => {
 
         if (found === true) {
 
-            $('.wrapper-number').find("#result").eq(`${i}`).addClass('result').attr('src', '../assets/win.png')
+            $('.wrapper-number').find("#result").eq(`${i}`).addClass('result').attr('src', './assets/win.png')
             let sum = allTickets[i].length;
             switch (sum) {
                 case 1: gain = bet[i] * 2;
@@ -152,7 +152,7 @@ winTickets = () => {
             $('#winBet').text(won)
         }
         else {
-            $('.wrapper-number').find("#result").eq(`${i}`).addClass('result').attr('src', '../assets/lose.png')
+            $('.wrapper-number').find("#result").eq(`${i}`).addClass('result').attr('src', './assets/lose.png')
         }
         $("#betValueText").text(betValueText)
     }
