@@ -51,8 +51,6 @@ border: 2px solid #fff;
     flex-direction: column;
     justify-content: space-around;
     border-radius: 30px;
-    /* background-color: rgb(255, 255, 255,0.1); */
-    
     box-shadow: 0px 3px 12px -1px rgb(165, 164, 164);
 }
 
@@ -77,7 +75,7 @@ button:focus{
     flex-direction: column;
 }
 
-/* //sekcija dugmici */
+/* sekcija dugmici */
 .section-2{
     height: 100%;
     display: flex;
@@ -100,7 +98,6 @@ button:focus{
     justify-content: center;
     align-items: center;
     color: #231f20;
-    /* animation: animate 1.4s linear infinite; */
 }
 .win-1, .win-2 {
     display: flex;
@@ -123,11 +120,11 @@ h4{
 
 
 .bet-1{
-display: flex;
-flex-direction: column;
-justify-content: space-evenly;
-align-items: center;
-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
 }
 
 .set-bet{
@@ -148,7 +145,6 @@ border: 1px solid #fff;
     font-weight: 900;
     margin: 0;
 }
-
 
 #betValue{
     width: 100%;
@@ -173,8 +169,8 @@ border: 1px solid #fff;
     font-size: 1rem;
     border-radius: 50px;
     background: #ee2049;
- 
 }
+
 button:hover{
     border: 2px solid rgba(255, 255, 255, 0.719);
 }
@@ -185,9 +181,7 @@ button:hover{
 }
 
 .btn-disabled{
-
     opacity: 0.2;
-    
 }
 
 .btn-add:before{
@@ -300,6 +294,7 @@ body > div > div.section-2{
 .win-ticket{ 
 background:#0caa58e1;
 }
+
 .lose-ticket{
     background: #ee2049c5;
 }

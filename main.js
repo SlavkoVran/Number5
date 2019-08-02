@@ -1,6 +1,6 @@
-
-const numbersForSelections = document.querySelector('#numbersForSelections')
+const numbersForSelections = document.querySelector('#numbersForSelections');
 let pom = 0;
+let pom1 = 0;
 let counter = 0;
 let arrayDrawnNumbers = [];
 let arrayWinTickets = [];
@@ -8,7 +8,7 @@ let allTickets = [];
 let arrayTicket = [];
 let bet = [];
 
-// objekat numbers
+// Dinamicko kreiranje brojeva za izbor 
 const UI = {
     numbers: [],
     createObj() {
@@ -18,23 +18,21 @@ const UI = {
             let obj1 = Object.create(obj, {
                 number: { value: number }
             })
-            this.numbers.push(obj1)
+            this.numbers.push(obj1);
         }
     },
-    // Dinamičko kreiranje elemenata
     createDiv() {
         this.numbers.forEach(num => {
             numbersForSelections.innerHTML += `<div class='number-background'> ${num.number} </div>`
-        })
+        });
     },
-
 }
 UI.createObj();
 UI.createDiv();
 
-$('.number-background').on('click', selectNumber)
-let pom1 = 0;
+$('.number-background').on('click', selectNumber);
 
+// izbor brojeva za tiket
 function selectNumber() {
     $(this).toggleClass('number-background-update');
     if ($(this).is('.number-background-update')) {
@@ -47,9 +45,9 @@ function selectNumber() {
         pom1 = 5;
     }
 }
-
+//dodavanje i prikaz brojeva u tiketima
 addTicket = () => {
-    let numbers = $('.number-background')
+    let numbers = $('.number-background');
     for (let i = 0; i < numbers.length; i++) {
         if ($('.number-background:eq(' + i + ')').is('.number-background-update'))
             arrayTicket.push(i + 1)
@@ -84,13 +82,14 @@ addTicket = () => {
             $('#btnAddTicket').addClass('btn-play');
             $('.number-background').off('click', selectNumber);
             $('#btnAddTicket').off('click', addTicket).one('click', drawnOut);
+            $('.set-bet').off('click', setBetValue);
         }
     }
     $("#betValue").text('10')
 }
 
 $('#btnAddTicket').on('click', addTicket);
-
+// Kreiranje niza izvucenih brojeva
 randomNumber = () => {
     while (arrayDrawnNumbers.length < 12) {
         let selectedNumbers = Math.ceil(Math.random() * 30);
@@ -99,7 +98,7 @@ randomNumber = () => {
         }
     }
 }
-
+// prikaz izvucenih brojeva
 drawnOut = () => {
     randomNumber();
     console.log(arrayDrawnNumbers)
@@ -109,12 +108,12 @@ drawnOut = () => {
     interval = setInterval(function () {
         $('#drawnNumber' + pom).text(arrayDrawnNumbers[pom]);
         $('#drawnNumber' + pom).addClass('drawn-number');
-        $('#btnAddTicket').addClass('btn-disabled')
+        $('#btnAddTicket').addClass('btn-disabled');
 
         pom++;
         if (pom == 12) {
-            stopInterval()
-            setTimeout(winTickets, 2000)
+            stopInterval();
+            setTimeout(winTickets, 2000);
         }
     }, 2000)
 }
@@ -124,16 +123,15 @@ let gain = 0;
 let won = 0;
 let betValueText = 0;
 
+//provera da li je tiket dobitan ili ne 
 winTickets = () => {
-    // let result = $('<div id="result"> <img src="../assets/lose.png"></div>')
     for (let i = 0; i < allTickets.length; i++) {
         let found = allTickets[i].every(r => arrayDrawnNumbers.indexOf(r) >= 0);
         arrayWinTickets.push(found);
-        betValueText += +bet[i]
-        $("#betValueText").text(betValueText)
-
+        betValueText += +bet[i];
+        $("#betValueText").text(betValueText);
+// ukoliko je dobitan tiket racuna se ukupna osvojena suma 
         if (found === true) {
-
             $('.wrapper-number').find("#result").eq(`${i}`).addClass('result').attr('src', './assets/win.png')
             let sum = allTickets[i].length;
             switch (sum) {
@@ -149,37 +147,34 @@ winTickets = () => {
                     break;
             }
             won += gain;
-            $('#winBet').text(won)
+            $('#winBet').text(won);
         }
         else {
-            $('.wrapper-number').find("#result").eq(`${i}`).addClass('result').attr('src', './assets/lose.png')
+            $('.wrapper-number').find("#result").eq(`${i}`).addClass('result').attr('src', './assets/lose.png');
         }
-        $("#betValueText").text(betValueText)
+        $("#betValueText").text(betValueText);
     }
     $('.win-lose').each(function () {
         if (arrayDrawnNumbers.indexOf(+$(this).text()) < 0) {
-            $(this).css('background', '#ee2049')
+            $(this).css('background', '#ee2049');
         } else {
-            $(this).css('background', '#0caa58')
+            $(this).css('background', '#0caa58');
         }
     })
-    let timerInterval
-Swal.fire({
-  title: 'The new game starts in 10 sekonds. You won' + won,
-  text: 'You spend' + betValueText,
-  timer: 10000,
-  position: 'bottom-left',
-})
+    Swal.fire({
+        title: 'The new game starts in 10 seconds. You won  ' + won,
+        text: 'You spent  ' + betValueText,
+        timer: 10000,
+        position: 'bottom-left',
+    })
     setTimeout(reset, 10000);
 }
 
-
-$('.set-bet').on('click', setBetValue)
-
+$('.set-bet').on('click', setBetValue);
+// unosenje visine sume za opkladu
 function setBetValue() {
-    let betValue = $("#betValue").text()
+    let betValue = $("#betValue").text();
     const betPlus = $(this).attr('src');
-
     switch (betPlus) {
         case "./assets/add.svg":
             betValue = +betValue + 10
@@ -192,12 +187,9 @@ function setBetValue() {
             }
             break;
     }
-    $("#betValue").text(betValue)
-
+    $("#betValue").text(betValue);
 }
-
-
-
+// resetovanje igrice
 reset = () => {
     $('#drawnNumbers').empty();
     $('#btnAddTicket').removeClass('btn-play').removeClass('btn-disabled');
@@ -208,6 +200,7 @@ reset = () => {
     $('#winBet').text('0');
     $("#betValue").text('10');
     $("#betValueText").text('0');
+    $('.set-bet').on('click', setBetValue);
     pom = 0;
     arrayDrawnNumbers = [];
     counter = 0;
@@ -217,7 +210,7 @@ reset = () => {
     betValueText = 0;
     bet = [];
 }
-
+//prikaz pravila
 $('#rules').on('click', function showRules() {
     Swal.fire({
         position: 'center',

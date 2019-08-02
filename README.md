@@ -25,16 +25,8 @@ Sadrži sledeće elemente:
 
 **Dodatni opis:**
 
-1. Nakon izvlačenja svih brojeva i prikaza dobitnih i gubitnih tiketa, igra se sama vraća na početno stanje nakon 5s. 
+1. Nakon izvlačenja svih brojeva i prikaza dobitnih i gubitnih tiketa, igra se sama vraća na početno stanje nakon 10s. 
 2. Dodati uplatu, isplatu i kvote. 
-
-
-## Izgled aplikacije:
-
-Ovde ubaci printscreen tvoje aplikacije, kao sto su oni dali one tri slike u zadatku: 
-1. Na pocetku
-2. Izgled aplikacije nakon što je svih 5 tiketa dodato 
-3. Izgled aplikacije nakon što je izvlačenje završeno
 
 ## Korišćene tehnologije:
 * HTML
@@ -43,7 +35,6 @@ Ovde ubaci printscreen tvoje aplikacije, kao sto su oni dali one tri slike u zad
 * JQuery
 * Adobe Illustrator
 * Git
-
 
 ## Responzivni dizajn:
 Prezentacija je optimizovana za prikaz na različitim veličinama ekrana.
