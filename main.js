@@ -27,7 +27,7 @@ const UI = {
             numbersForSelections.innerHTML += `<div class='number-background'> ${num.number} </div>`
         })
     },
-   
+
 }
 UI.createObj();
 UI.createDiv();
@@ -56,7 +56,7 @@ addTicket = () => {
     }
     if (arrayTicket.length < 1) {
         Swal.fire({
-            position: 'bottom-right',
+            position: 'bottom-left',
             title: 'Select at least one number.',
             customClass: 'swal-custom',
             showConfirmButton: false,
@@ -65,9 +65,11 @@ addTicket = () => {
     }
     if ($('#btnAddTicket').not('btn-play') && arrayTicket.length != 0) {
         let wrapper = $('<div class="wrapper-number"></div>')
+        let result = $('<img id="result" src="">')
         for (let i = 0; i < arrayTicket.length; i++) {
-            let div = $('<div class="number-background win-lose"></div>').text(arrayTicket[i])
+            let div = $('<div class="number-background-update  win-lose"></div>').text(arrayTicket[i])
             wrapper.append(div)
+            wrapper.append(result)
             $('#ticketDisplay').append(wrapper);
         }
         allTickets.push(arrayTicket);
@@ -93,7 +95,7 @@ randomNumber = () => {
     while (arrayDrawnNumbers.length < 12) {
         let selectedNumbers = Math.ceil(Math.random() * 30);
         if (arrayDrawnNumbers.indexOf(selectedNumbers) == -1) {
-            arrayDrawnNumbers.push(selectedNumbers);  
+            arrayDrawnNumbers.push(selectedNumbers);
         }
     }
 }
@@ -101,14 +103,14 @@ randomNumber = () => {
 drawnOut = () => {
     randomNumber();
     console.log(arrayDrawnNumbers)
-    for(let i=0;i<12;i++){
+    for (let i = 0; i < 12; i++) {
         $('#drawnNumbers').append($(`<div id="drawnNumber${i}" > </div>`))
-        } 
+    }
     interval = setInterval(function () {
         $('#drawnNumber' + pom).text(arrayDrawnNumbers[pom]);
         $('#drawnNumber' + pom).addClass('drawn-number');
         $('#btnAddTicket').addClass('btn-disabled')
-        
+
         pom++;
         if (pom == 12) {
             stopInterval()
@@ -123,15 +125,16 @@ let won = 0;
 let betValueText = 0;
 
 winTickets = () => {
+    // let result = $('<div id="result"> <img src="../assets/lose.png"></div>')
     for (let i = 0; i < allTickets.length; i++) {
         let found = allTickets[i].every(r => arrayDrawnNumbers.indexOf(r) >= 0);
         arrayWinTickets.push(found);
         betValueText += +bet[i]
         $("#betValueText").text(betValueText)
-    
+
         if (found === true) {
-            $('#ticketDisplay').find(".wrapper-number").eq(`${i}`).addClass('win-ticket')
-            $('.wrapper-number').find(".numbre-beckground-update").eq(`${i}`).addClass('win-ticket')
+
+            $('.wrapper-number').find("#result").eq(`${i}`).addClass('result').attr('src', '../assets/win.png')
             let sum = allTickets[i].length;
             switch (sum) {
                 case 1: gain = bet[i] * 2;
@@ -147,20 +150,27 @@ winTickets = () => {
             }
             won += gain;
             $('#winBet').text(won)
-        } else {
-            $('#ticketDisplay').find(".wrapper-number").eq(`${i}`).addClass('lose-ticket')
+        }
+        else {
+            $('.wrapper-number').find("#result").eq(`${i}`).addClass('result').attr('src', '../assets/lose.png')
         }
         $("#betValueText").text(betValueText)
     }
-    $('.win-lose').each(function(){
-        if(arrayDrawnNumbers.indexOf(+$(this).text())<0){
-        $(this).css('background','#ee2049')
+    $('.win-lose').each(function () {
+        if (arrayDrawnNumbers.indexOf(+$(this).text()) < 0) {
+            $(this).css('background', '#ee2049')
         } else {
-        $(this).css('background','#0caa58')
+            $(this).css('background', '#0caa58')
         }
-        })
-    
-    setTimeout(reset, 5000);
+    })
+    let timerInterval
+Swal.fire({
+  title: 'The new game starts in 10 sekonds. You won' + won,
+  text: 'You spend' + betValueText,
+  timer: 10000,
+  position: 'bottom-left',
+})
+    setTimeout(reset, 10000);
 }
 
 
@@ -183,7 +193,7 @@ function setBetValue() {
             break;
     }
     $("#betValue").text(betValue)
-    
+
 }
 
 
@@ -195,17 +205,20 @@ reset = () => {
     $('.number-background').on('click', selectNumber);
     $('#btnAddTicket').off('click', drawnOut).on('click', addTicket);
     $('#ticketDisplay').empty();
-    $('#winBet').text('0')
-    $("#betValue").text('10')
-    $("#betValueText").text('0')
+    $('#winBet').text('0');
+    $("#betValue").text('10');
+    $("#betValueText").text('0');
     pom = 0;
     arrayDrawnNumbers = [];
     counter = 0;
     allTickets = [];
     arrayWinTickets = [];
+    won = 0;
+    betValueText = 0;
+    bet = [];
 }
 
-$('#rules').on('click', function showRules () {
+$('#rules').on('click', function showRules() {
     Swal.fire({
         position: 'center',
         type: 'question',

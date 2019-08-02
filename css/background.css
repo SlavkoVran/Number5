@@ -1,0 +1,70 @@
+.wrapper-bg{
+    height: 100vh;
+    display: flex;
+    align-content: center;
+    color:#fff; 
+}
+
+.video-bg{
+    position: absolute;
+    bottom:0;
+    right: 0;
+    width: 50%;
+    height: 20vh;
+    overflow: hidden;
+}
+
+.video-bg div{
+    position: absolute;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.video-bg :nth-child(1){
+    top:30%;
+    right: -10vh;
+    background: #117fcd;
+    width: 30vh;
+    height: 30vh;
+}
+.video-bg :nth-child(2){
+    position: absolute;
+    top:25%;
+    right: 10%;
+    background: #ee2049;
+    border-radius: 50%;
+    width: 5vh;
+    height: 5vh;
+}
+
+.video-bg :nth-child(3){
+    position: absolute;
+    top:50%;
+    right: 20%;
+    background: #ee2049;
+    border-radius: 50%;
+    width: 1vh;
+    height: 1vh;
+}
+
+.video-bg :nth-child(4){
+    position: absolute;
+    top:20%;
+    right: 10%;
+    background: #ee2049;
+    border-radius: 50%;
+    width: 1vh;
+    height: 1vh;
+}
+
+.video-bg :nth-child(5){
+    position: absolute;
+    bottom:0;
+    right: 17%;
+    background: #ee2049;
+    border-radius: 50%;
+    width: 2vh;
+    height: 2vh;
+}
+
+

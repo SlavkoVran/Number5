@@ -28,10 +28,13 @@
         align-items: center;
         flex-direction: row;
     }
-    .section-1{
-        width: 60%;
-        height: 80%;
+
+    .section-1, .section-4{
+        margin: 5px;
+        width: 50%;
+        height: 90%;
     }
+
     .section-2{
         grid-row: 4;
     }
@@ -40,14 +43,10 @@
         justify-items: center;
         align-items: center;
     }       
-    .section-4{
-       
-        width: 40%;
-        height: 80%;
-    }
+    
     .drawn-number{
-        height: 8vh;
-        width: 8vh;
+        height: 7vh;
+        width: 7vh;
     }
     .number-background{
         height: 7vh;
@@ -70,5 +69,9 @@
     }
     button{
         font-size: 1.6rem;
+    }
+    .result{
+        height: 7vh;
+        width: 7vh;
     }
 }

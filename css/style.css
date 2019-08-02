@@ -10,35 +10,6 @@ body{
     overflow-x: hidden;
 }
 
-.wrapper-bg{
-    height: 100vh;
-    display: flex;
-    align-content: center;
-    color:#fff; 
-}
-
-.bg-container{
-    max-width: 960px;
-    padding-left:1rem;
-    padding-right: 1rem;
-    margin: auto;
-    text-align: center;
-}
-
-.video-bg{
-    position: absolute;
-    top:0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-}
-
-.video-bg video{
-    min-width: 100%;
-    min-height: 100%;
-    object-fit: contain;
-}
 
 .num-header{
     display: flex;
@@ -78,13 +49,15 @@ border: 2px solid #fff;
     height: 50%;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     border-radius: 30px;
-    background-color: rgb(255, 255, 255,0.1);
+    /* background-color: rgb(255, 255, 255,0.1); */
+    
     box-shadow: 0px 3px 12px -1px rgb(165, 164, 164);
 }
 
 .section-1{
-    justify-content: space-around;
+    background: #f3f0f0;
 }
 
 button:focus{
@@ -92,7 +65,7 @@ button:focus{
 }
 
 .section-4{
-justify-content: space-around;
+    background: #f5f2f2c9;
 }
 
 #numbersForSelections, #ticketDisplay{
@@ -118,11 +91,9 @@ justify-content: space-around;
     display: flex;
     width: 25%;
     border-radius: 10px;
-    background-color: rgb(255, 255, 255,0.1);
+    background: #f5f2f27a;
     box-shadow: 0px 3px 12px -1px rgb(165, 164, 164);
 }
-
-
 
 .win{  
     flex-direction: column;
@@ -257,8 +228,19 @@ body > div > div.section-2{
     justify-items: center;
     align-items: center;
     color: white;
+    background: #f5f2f27a;
     border-radius: 30px;
     box-shadow: 0px 3px 12px -1px rgb(165, 164, 164);
+    width: 100%;
+}
+
+.result{
+    height: 5vh;
+    width: 5vh;
+    cursor: pointer;
+    align-self: center;
+    margin-left: auto; 
+    margin-right: 5px;
 }
 
 .wrapper-number{
@@ -305,11 +287,11 @@ body > div > div.section-2{
 .number-background{
     color:#231f20; 
     margin: 0;
-    background: radial-gradient(circle at 50% 40%, #fcfcfc, #efeff1 66%, #9b5050 100%);
+    background: radial-gradient(circle at 50% 40%, #fcfcfc, #fff 66%, #9b5050 100%);
 }
 
 .number-background-update{
-    margin-left: 3%;
+    /* margin-left: 3%; */
     background: #117fcd;
     background: radial-gradient(circle at 50% 40%, #117fcd, #117fcd 66%, #fff 100%);
     color:#fff;
