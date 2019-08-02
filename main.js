@@ -160,7 +160,7 @@ winTickets = () => {
         }
         })
     
-    // setTimeout(reset, 5000);
+    setTimeout(reset, 5000);
 }
 
 
